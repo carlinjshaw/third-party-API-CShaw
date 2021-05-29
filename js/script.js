@@ -8,25 +8,32 @@ var dateText = document.getElementById('currentDay')
 dateText.textContent = myCurrentDay
 
 var saved9amtext = localStorage.getItem("9amtext") 
+var saved10amtext = localStorage.getItem("10amtext") 
 
-// setter
-$("#9amtext").val(saved9amtext)
-//logic for background colors
-var currentTime = parseInt(moment().format("H"))
-console.log(currentTime)
+            // setter
+            $("#9amtext").val(saved9amtext)
+            //logic for background colors
+            var currentTime = parseInt(moment().format("H"))
+            console.log(currentTime)
 
 
-var nineAmBlock = $("#9amtext") 
-if (currentTime > 9){
-nineAmBlock.addClass("past")
-}
+            var nineAmBlock = $("#9amtext") 
+            if (currentTime > 9){
+            nineAmBlock.addClass("past")
+            }
+            else if (currentTime < 9){
+                nineAmBlock.addClass("future")
+            }
+            else if (currentTime === 9){
+                nineAmBlock.addClass("present")
+            }
 
-$("#9ambutton").on("click", function() {
-// getter
-var my9amText = $("#9amtext").val()
-console.log(my9amText)
-localStorage.setItem("9amtext", my9amText)
-})
+            $("#9ambutton").on("click", function() {
+            // getter
+            var my9amText = $("#9amtext").val()
+            console.log(my9amText)
+            localStorage.setItem("9amtext", my9amText)
+            })
 
 // for (let index = 0; index < array.length; index++) {
 //   $("#"+index+"ambutton").on("click", function() {
@@ -38,7 +45,6 @@ localStorage.setItem("9amtext", my9amText)
 // })
 
 
-var saved10amtext = localStorage.getItem("10amtext") 
 
 // setter
 $("#10amtext").val(saved10amtext)
@@ -49,7 +55,13 @@ console.log(currentTime)
 
 var tenAmBlock = $("#10amtext") 
 if (currentTime > 10){
-tenAmBlock.addClass("past")
+    tenAmBlock.addClass("past")
+}
+else if (currentTime < 10){
+    tenAmBlock.addClass("future")
+}
+else if (currentTime === 10){
+    tenAmBlock.addClass("present")
 }
 
 $("#10ambutton").on("click", function() {
